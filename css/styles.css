@@ -1,0 +1,161 @@
+:root {
+  --crema: #f8f5fc;
+  --crema-2: #ece5f6;
+  --terracota: #4b1f8f;
+  --terracota-osc: #33126b;
+  --verde: #5a2fa0;
+  --texto: #24183a;
+  --texto-suave: #6a5d80;
+  --blanco: #ffffff;
+  --radio: 18px;
+  --sombra: 0 10px 30px rgba(43, 18, 90, 0.10);
+  --max: 1100px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Nunito", system-ui, sans-serif;
+  background: var(--crema);
+  color: var(--texto);
+  line-height: 1.6;
+}
+
+h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.15; }
+
+a { color: inherit; text-decoration: none; }
+
+.contenedor { width: min(var(--max), 100% - 32px); margin-inline: auto; }
+
+/* ---------- Encabezado ---------- */
+.header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(248, 245, 252, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--crema-2);
+}
+.header .contenedor { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: "Great Vibes", cursive; font-size: 2rem; color: var(--terracota); }
+.logo small { font-family: "Nunito", sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--texto-suave); margin-left: -4px; align-self: flex-end; margin-bottom: 10px; }
+.logo-ovillo { width: 40px; height: 40px; border-radius: 50%; }
+.nav { display: flex; gap: 24px; }
+.nav a { font-weight: 600; color: var(--texto-suave); transition: color .2s; }
+.nav a:hover, .nav a.activo { color: var(--terracota); }
+
+.menu-btn { display: none; background: none; border: 0; font-size: 1.6rem; cursor: pointer; color: var(--texto); }
+
+/* ---------- Botones ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: 999px; border: 2px solid transparent;
+  font-weight: 700; font-size: 1rem; cursor: pointer; transition: transform .15s, background .2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-principal { background: var(--terracota); color: var(--blanco); }
+.btn-principal:hover { background: var(--terracota-osc); }
+.btn-secundario { border-color: var(--texto); color: var(--texto); background: transparent; }
+.btn-wsp { background: #25d366; color: #fff; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 72px 0 56px; }
+.hero .contenedor { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.etiqueta { display: inline-block; background: var(--crema-2); color: var(--terracota); font-weight: 700; padding: 6px 14px; border-radius: 999px; font-size: .85rem; margin-bottom: 18px; }
+.hero h1 { font-size: clamp(2.3rem, 5vw, 3.6rem); margin-bottom: 18px; }
+.hero h1 span { color: var(--terracota); font-style: italic; }
+.hero p { font-size: 1.15rem; color: var(--texto-suave); margin-bottom: 28px; max-width: 520px; }
+.hero-botones { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-arte { position: relative; aspect-ratio: 1; }
+.hero-arte svg { width: 100%; height: 100%; }
+
+/* ---------- Secciones ---------- */
+.seccion { padding: 64px 0; }
+.seccion-alt { background: var(--crema-2); }
+.titulo-seccion { text-align: center; margin-bottom: 40px; }
+.titulo-seccion h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); margin-bottom: 8px; }
+.titulo-seccion p { color: var(--texto-suave); }
+
+.grilla-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.tarjeta { background: var(--blanco); border-radius: var(--radio); padding: 28px; box-shadow: var(--sombra); }
+.tarjeta .icono { font-size: 2rem; margin-bottom: 12px; }
+.tarjeta h3 { font-size: 1.3rem; margin-bottom: 8px; }
+.tarjeta p { color: var(--texto-suave); }
+
+/* ---------- Info de la tienda ---------- */
+.info { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.info-item { background: var(--blanco); border-radius: var(--radio); padding: 24px; box-shadow: var(--sombra); }
+.info-item strong { display: block; font-family: "Fraunces", serif; font-size: 1.1rem; margin-bottom: 4px; }
+.info-item span, .info-item a { color: var(--texto-suave); }
+.info-item a { text-decoration: underline; }
+
+.cta { text-align: center; background: var(--verde); color: var(--blanco); border-radius: 28px; padding: 48px 24px; }
+.cta h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); margin-bottom: 10px; }
+.cta p { opacity: .9; margin-bottom: 24px; }
+
+/* ---------- Catálogo ---------- */
+.cabecera-pagina { padding: 56px 0 24px; text-align: center; }
+.cabecera-pagina h1 { font-size: clamp(2.2rem, 5vw, 3rem); margin-bottom: 8px; }
+.cabecera-pagina p { color: var(--texto-suave); }
+
+.filtros { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 24px 0 36px; }
+.filtro {
+  padding: 8px 20px; border-radius: 999px; border: 2px solid var(--crema-2);
+  background: var(--blanco); font: inherit; font-weight: 700; color: var(--texto-suave); cursor: pointer;
+}
+.filtro.activo { background: var(--terracota); border-color: var(--terracota); color: var(--blanco); }
+
+.productos { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; padding-bottom: 72px; }
+.producto { background: var(--blanco); border-radius: var(--radio); overflow: hidden; box-shadow: var(--sombra); display: flex; flex-direction: column; }
+.producto-arte { aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.producto-arte svg { width: 55%; height: auto; }
+.producto-cuerpo { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.producto-cat { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--verde); }
+.producto h3 { font-size: 1.25rem; }
+.producto p { color: var(--texto-suave); font-size: .95rem; flex: 1; }
+.colores { display: flex; gap: 6px; flex-wrap: wrap; }
+.color { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--blanco); box-shadow: 0 0 0 1px #ddd; cursor: pointer; }
+.color.elegido { box-shadow: 0 0 0 2px var(--terracota); }
+.producto .btn { justify-content: center; padding: 10px 18px; font-size: .95rem; }
+
+/* ---------- Pie ---------- */
+.footer { background: var(--texto); color: #e9e1d8; padding: 32px 0; text-align: center; font-size: .95rem; }
+.footer a { text-decoration: underline; }
+
+/* ---------- Botón flotante WhatsApp ---------- */
+.wsp-flotante {
+  position: fixed; right: 20px; bottom: 20px; width: 58px; height: 58px; border-radius: 50%;
+  background: #25d366; display: grid; place-items: center; box-shadow: 0 8px 20px rgba(0,0,0,.2); z-index: 20;
+}
+.wsp-flotante svg { width: 30px; height: 30px; fill: #fff; }
+
+.oculto { display: none !important; }
+
+/* ---------- Celulares ---------- */
+@media (max-width: 800px) {
+  .hero .contenedor { grid-template-columns: 1fr; text-align: center; }
+  .hero p { margin-inline: auto; }
+  .hero-botones { justify-content: center; }
+  .hero-arte { max-width: 300px; margin-inline: auto; }
+  .grilla-3 { grid-template-columns: 1fr; }
+  .menu-btn { display: block; }
+  .nav {
+    position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; gap: 0;
+    background: var(--crema); border-bottom: 1px solid var(--crema-2); display: none;
+  }
+  .nav.abierto { display: flex; }
+  .nav a { padding: 14px 16px; }
+}
+
+/* ---------- Estilo MundoLana (rayas como el perfil de Instagram) ---------- */
+.rayas {
+  background: repeating-linear-gradient(180deg, #2b0f63 0 14px, #4b1f8f 14px 26px, #6a3cb8 26px 30px, #3a1679 30px 44px);
+}
+.hero h1 span { font-family: "Great Vibes", cursive; font-style: normal; font-size: 1.25em; font-weight: 400; }
+.cta { background: none; position: relative; overflow: hidden; }
+.cta::before { content: ""; position: absolute; inset: 0; z-index: -1; }
+.cta.rayas { background: repeating-linear-gradient(180deg, #2b0f63 0 14px, #4b1f8f 14px 26px, #6a3cb8 26px 30px, #3a1679 30px 44px); }
+.cta h2 { font-family: "Great Vibes", cursive; font-weight: 400; font-size: clamp(2.4rem, 5vw, 3.2rem); }
+.footer { background: #1d0b45; }
+.footer .firma { font-family: "Great Vibes", cursive; font-size: 1.8rem; color: #cbb8f0; }
+.etiqueta { background: #e3d8f5; color: var(--terracota); }
