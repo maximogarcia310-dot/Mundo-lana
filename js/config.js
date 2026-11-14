@@ -19,6 +19,10 @@ const TIENDA = {
   // Dirección pública de la web. COMPLETAR: cambiarla si se publica en otra dirección
   // (y cambiarla también en las etiquetas "og:" de index.html y catalogo.html).
   url: "https://maximogarcia310-dot.github.io/Mundo-lana/",
+  // Estadísticas de visitas (GoatCounter, gratis). COMPLETAR: poner acá el código de la cuenta.
+  // Si la cuenta es https://mundolana.goatcounter.com, el código es "mundolana".
+  // Mientras quede vacío, no se cuenta nada. Los pasos están en el README.
+  goatcounter: "",
   // COMPLETAR: este link busca la dirección en Google Maps. Cambiarlo por el link exacto
   // del local (en Google Maps: abrir la ficha de la tienda → Compartir → Copiar vínculo).
   mapaUrl: "https://www.google.com/maps/search/?api=1&query=MundoLana+Hilados%2C+Maip%C3%BA+98%2C+Villa+Carlos+Paz%2C+C%C3%B3rdoba"

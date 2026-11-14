@@ -34,6 +34,7 @@ Cada tarea tiene un criterio de "listo" para saber cuándo está terminada.
 - **Listo cuando:** pegar el link en WhatsApp muestra una vista previa con imagen, y la [prueba de resultados enriquecidos de Google](https://search.google.com/test/rich-results) no da errores.
 
 ### [ ] 1.5 Estadísticas de visitas gratis
+- **Hecho:** el código y la guía del README. **Falta para cerrarla:** que Máximo cree la cuenta de GoatCounter y pase el código para ponerlo en `js/config.js` (`goatcounter`). Recién ahí se pueden ver las visitas y los clics.
 - Agregar **GoatCounter** (gratis, sin cookies). Contar también los clics en botones de WhatsApp como eventos.
 - Explicarle a Máximo cómo crear la cuenta y dónde mirar los números.
 - **Listo cuando:** se ven las visitas por página y los clics en WhatsApp.

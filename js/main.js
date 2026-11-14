@@ -107,6 +107,24 @@ function datosEstructurados() {
   document.head.appendChild(script);
 }
 
+// Estadísticas de visitas con GoatCounter (sin cookies). Cuenta las visitas a cada página
+// y, como eventos, los clics en los botones de WhatsApp (ej: "whatsapp/producto/Lana merino").
+function estadisticas() {
+  if (!TIENDA.goatcounter) return;
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = "https://gc.zgo.at/count.js";
+  script.dataset.goatcounter = `https://${TIENDA.goatcounter}.goatcounter.com/count`;
+  document.head.appendChild(script);
+
+  document.addEventListener("click", e => {
+    const link = e.target.closest("a[href*='wa.me']");
+    if (!link || !window.goatcounter || !window.goatcounter.count) return;
+    const evento = "whatsapp/" + (link.dataset.evento || "otro");
+    window.goatcounter.count({ path: evento, title: "Clic en WhatsApp", event: true });
+  });
+}
+
 // Menú para celulares
 function menuCelular() {
   const btn = document.querySelector(".menu-btn");
@@ -158,6 +176,7 @@ function tarjetaProducto(prod) {
 
   const arte = art.querySelector(".producto-arte");
   const boton = art.querySelector("[data-consulta]");
+  boton.dataset.evento = "producto/" + prod.nombre;
   const actualizarLink = () => {
     boton.href = linkWhatsapp(mensajeConsulta(prod.nombre, colorElegido && colorElegido.nombre, cantidad));
     if (TIENDA.whatsapp) boton.target = "_blank";
@@ -253,6 +272,7 @@ function cargarHero() {
 document.addEventListener("DOMContentLoaded", () => {
   cargarDatos();
   datosEstructurados();
+  estadisticas();
   menuCelular();
   cargarHero();
   cargarCatalogo();

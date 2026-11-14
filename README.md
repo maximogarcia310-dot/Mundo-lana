@@ -50,6 +50,24 @@ Si un producto no tiene foto (`foto: ""`), se muestra el ovillo dibujado.
 - Si la web se muda a otra dirección, hay que cambiar `TIENDA.url` y las direcciones `https://...` de las etiquetas `og:` de las dos páginas.
 - Para probarlo: [prueba de resultados enriquecidos de Google](https://search.google.com/test/rich-results) con la dirección de la web.
 
+## Estadísticas de visitas (GoatCounter)
+
+La web usa [GoatCounter](https://www.goatcounter.com): es gratis para sitios chicos, no usa cookies y no hace falta poner ningún cartel de aviso.
+
+**Crear la cuenta (una sola vez):**
+
+1. Entrá a [goatcounter.com/signup](https://www.goatcounter.com/signup).
+2. En **Code** elegí un nombre corto, por ejemplo `mundolana`. Completá el mail y una contraseña.
+3. En `js/config.js`, escribí ese nombre en `goatcounter: "mundolana"` y subí el cambio.
+
+**Dónde mirar los números:** entrá a `https://ELCODIGO.goatcounter.com` (por ejemplo `https://mundolana.goatcounter.com`) con tu mail y contraseña.
+
+- Las **visitas por página** aparecen en la lista principal (`/Mundo-lana/` es el inicio y `/Mundo-lana/catalogo.html` el catálogo).
+- Los **clics en WhatsApp** aparecen en la misma lista como eventos que empiezan con `whatsapp/`. Por ejemplo `whatsapp/producto/Lana merino` (consultaron por ese producto) o `whatsapp/inicio/boton-flotante` (tocaron el botón verde flotante en el inicio).
+- En **Referrers** se ve desde dónde llega la gente (Instagram, Google, etc.).
+
+Las visitas hechas abriendo el archivo en tu compu no se cuentan: solo cuentan las de la web publicada.
+
 ## Cómo verla
 
 Abrí `index.html` en el navegador. No hace falta instalar nada.
