@@ -18,7 +18,8 @@ Cada tarea tiene un criterio de "listo" para saber cuándo está terminada.
 - Todos los mensajes que salen de la web terminan con "(Vengo de la web)", para poder registrar de dónde vino el cliente.
 - **Listo cuando:** elegir "Lana merino", color "Violeta uva" y 3 unidades abre WhatsApp con un texto como: "Hola MundoLana Hilados, quería consultar por: Lana merino, color Violeta uva, 3 unidades. (Vengo de la web)".
 
-### [ ] 1.3 Fotos reales y colores con nombre
+### [x] 1.3 Fotos reales y colores con nombre
+- **Pendiente de Máximo:** las fotos de los productos y los nombres reales de los colores (hoy son provisorios, marcados `// COMPLETAR:` en `js/config.js`).
 - Cambiar el formato de `PRODUCTOS` para que cada color tenga `{ nombre, hex }` y cada producto una `foto` opcional en `img/productos/`.
 - Si un producto tiene foto, se muestra la foto. Si no, se sigue mostrando el ovillo dibujado.
 - Optimizar las fotos (WebP, menos de 150 KB, `loading="lazy"`).

@@ -1,0 +1,2 @@
+Acá van las fotos de los productos (WebP, 800 px de ancho, menos de 150 KB).
+Los pasos están en el README, sección "Fotos de los productos".

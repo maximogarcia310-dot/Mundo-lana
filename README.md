@@ -22,7 +22,26 @@ La tienda necesitaba una web rápida y adaptada al celular. Ahí los clientes pu
 Todos los datos de la tienda y del catálogo están en `js/config.js`:
 
 - `TIENDA`: dirección, horarios, número de WhatsApp, Instagram y link de Google Maps. Si un dato queda vacío, esa parte no se muestra en la web.
-- `PRODUCTOS`: lista de productos con nombre, categoría, descripción y colores.
+- `PRODUCTOS`: lista de productos con nombre, categoría, descripción, foto y colores.
+
+### Colores
+
+Cada color se escribe con su nombre y su código:
+
+```js
+{ nombre: "Violeta uva", hex: "#5a2fa0" }
+```
+
+El nombre es el que ve el cliente al tocar el color, y el que nos llega en el mensaje de WhatsApp. Para sacar el código de un color se puede usar cualquier "selector de color" (buscando eso en Google aparece uno).
+
+### Fotos de los productos
+
+1. Sacá la foto **apaisada** (más ancha que alta), con buena luz y fondo liso.
+2. Entrá a [squoosh.app](https://squoosh.app), subí la foto, elegí **Resize** con ancho 800 y formato **WebP**. Tiene que pesar menos de 150 KB (si pesa más, bajá un poco la calidad).
+3. Guardala en la carpeta `img/productos/` con un nombre simple, sin espacios ni acentos. Por ejemplo `lana-merino.webp`.
+4. En `js/config.js`, escribí ese nombre en el producto: `foto: "lana-merino.webp"`.
+
+Si un producto no tiene foto (`foto: ""`), se muestra el ovillo dibujado.
 
 ## Cómo verla
 

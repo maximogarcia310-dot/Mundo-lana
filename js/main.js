@@ -84,24 +84,32 @@ function menuCelular() {
 }
 
 // ---------- Catálogo ----------
+const CARPETA_FOTOS = "img/productos/";
+const COLOR_SIN_ELEGIR = "#9d86cf"; // ovillo violeta para productos sin colores
+
 function tarjetaProducto(prod) {
   const art = document.createElement("article");
   art.className = "producto";
   art.dataset.categoria = prod.categoria;
 
-  let colorElegido = prod.colores[0];
+  const colores = prod.colores || [];
+  let colorElegido = colores[0] || null;
   let cantidad = 1;
   const id = prod.nombre.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
   art.innerHTML = `
-    <div class="producto-arte" style="background:${colorElegido}22">${ovillo(colorElegido)}</div>
+    <div class="producto-arte"></div>
     <div class="producto-cuerpo">
       <span class="producto-cat">${prod.categoria}</span>
       <h3>${prod.nombre}</h3>
       <p>${prod.descripcion}</p>
-      <div class="colores">
-        ${prod.colores.map((c, i) => `<button class="color${i === 0 ? " elegido" : ""}" style="background:${c}" data-color="${c}" aria-label="Color ${i + 1}"></button>`).join("")}
-      </div>
+      ${colores.length ? `
+      <div>
+        <p class="color-nombre" aria-live="polite">Color: <strong data-color-nombre></strong></p>
+        <div class="colores" role="group" aria-label="Colores de ${prod.nombre}">
+          ${colores.map((c, i) => `<button type="button" class="color" style="background:${c.hex}" data-i="${i}" aria-label="${c.nombre}" title="${c.nombre}" aria-pressed="false"></button>`).join("")}
+        </div>
+      </div>` : ""}
       <div class="cantidad">
         <span class="cantidad-titulo" id="cant-${id}">Cantidad</span>
         <div class="cantidad-control" role="group" aria-labelledby="cant-${id}">
@@ -116,10 +124,44 @@ function tarjetaProducto(prod) {
   const arte = art.querySelector(".producto-arte");
   const boton = art.querySelector("[data-consulta]");
   const actualizarLink = () => {
-    boton.href = linkWhatsapp(mensajeConsulta(prod.nombre, colorElegido.nombre, cantidad));
+    boton.href = linkWhatsapp(mensajeConsulta(prod.nombre, colorElegido && colorElegido.nombre, cantidad));
     if (TIENDA.whatsapp) boton.target = "_blank";
   };
-  actualizarLink();
+
+  // Si el producto tiene foto se muestra la foto; si no (o si no carga), el ovillo dibujado
+  let hayFoto = false;
+  const dibujarOvillo = () => {
+    const hex = colorElegido ? colorElegido.hex : COLOR_SIN_ELEGIR;
+    arte.style.background = hex + "22";
+    arte.innerHTML = ovillo(hex);
+  };
+  if (prod.foto) {
+    hayFoto = true;
+    const img = document.createElement("img");
+    img.src = CARPETA_FOTOS + prod.foto;
+    img.alt = prod.nombre;
+    img.loading = "lazy";
+    img.width = 800; img.height = 600; // reserva el lugar (4:3) mientras carga
+    img.addEventListener("error", () => { hayFoto = false; dibujarOvillo(); });
+    arte.appendChild(img);
+  } else {
+    dibujarOvillo();
+  }
+
+  const nombreColor = art.querySelector("[data-color-nombre]");
+  const botonesColor = art.querySelectorAll(".color");
+  const elegirColor = i => {
+    colorElegido = colores[i];
+    botonesColor.forEach((b, j) => {
+      b.classList.toggle("elegido", j === i);
+      b.setAttribute("aria-pressed", j === i);
+    });
+    nombreColor.textContent = colorElegido.nombre;
+    if (!hayFoto) dibujarOvillo();
+    actualizarLink();
+  };
+  botonesColor.forEach((b, i) => b.addEventListener("click", () => elegirColor(i)));
+  if (colores.length) elegirColor(0);
 
   const salida = art.querySelector("[data-cantidad]");
   const menos = art.querySelector("[data-menos]");
@@ -132,17 +174,6 @@ function tarjetaProducto(prod) {
   menos.addEventListener("click", () => cambiarCantidad(-1));
   art.querySelector("[data-mas]").addEventListener("click", () => cambiarCantidad(1));
   cambiarCantidad(0);
-
-  art.querySelectorAll(".color").forEach(b => {
-    b.addEventListener("click", () => {
-      colorElegido = b.dataset.color;
-      art.querySelectorAll(".color").forEach(x => x.classList.remove("elegido"));
-      b.classList.add("elegido");
-      arte.style.background = colorElegido + "22";
-      arte.innerHTML = ovillo(colorElegido);
-      actualizarLink();
-    });
-  });
 
   return art;
 }
