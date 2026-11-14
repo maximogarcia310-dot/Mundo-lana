@@ -26,7 +26,18 @@ Todos los datos de la tienda y del catálogo están en `js/config.js`:
 
 ## Cómo verla
 
-Abrí `index.html` en el navegador, o publicala con GitHub Pages desde **Settings → Pages**.
+Abrí `index.html` en el navegador. No hace falta instalar nada.
+
+## Cómo publicarla (GitHub Pages)
+
+Se hace una sola vez:
+
+1. Entrá al repositorio en GitHub y andá a **Settings → Pages**.
+2. En **Source** elegí **Deploy from a branch**.
+3. En **Branch** elegí `main` y la carpeta `/ (root)`, y tocá **Save**.
+4. Esperá un par de minutos. La web queda en `https://maximogarcia310-dot.github.io/Mundo-lana/`.
+
+Después de eso, cada cambio que llega a `main` se publica solo.
 
 ## Capturas
 

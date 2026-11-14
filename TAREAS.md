@@ -7,7 +7,8 @@ Cada tarea tiene un criterio de "listo" para saber cuándo está terminada.
 
 ## Etapa 1: arreglos rápidos
 
-### [ ] 1.1 Completar datos de la tienda y publicar
+### [x] 1.1 Completar datos de la tienda y publicar
+- **Pendiente de Máximo:** pasar el link exacto de Google Maps (hoy hay uno provisorio que busca la dirección) y confirmar que GitHub Pages está activado (los pasos están en el README).
 - En `js/config.js`, poner `direccion: "Maipú 98"` y el `mapaUrl` de Google Maps del local. Si no lo encontrás, pedíselo a Máximo.
 - Revisar que el sitio esté publicado en GitHub Pages. Si no lo está, explicarle a Máximo los pasos para activarlo.
 - **Listo cuando:** la sección "Visitanos" muestra dirección, horarios, mapa e Instagram, y el sitio tiene una URL pública.

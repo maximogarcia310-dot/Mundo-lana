@@ -6,11 +6,13 @@
 const TIENDA = {
   nombre: "MundoLana Hilados",
   ciudad: "Villa Carlos Paz, Córdoba",
-  direccion: "",          // ej: "Av. Ejemplo 123"
+  direccion: "Maipú 98",
   horarios: "Lunes a viernes de 9 a 13 hs y de 17 a 20 hs. Sábados de 10 a 13 hs.",
   whatsapp: "5493541583422", // 3541 583422 con código de país (54 9)
   instagram: "mundolanahilados",
-  mapaUrl: ""             // link de Google Maps de la tienda
+  // COMPLETAR: este link busca la dirección en Google Maps. Cambiarlo por el link exacto
+  // del local (en Google Maps: abrir la ficha de la tienda → Compartir → Copiar vínculo).
+  mapaUrl: "https://www.google.com/maps/search/?api=1&query=MundoLana+Hilados%2C+Maip%C3%BA+98%2C+Villa+Carlos+Paz%2C+C%C3%B3rdoba"
 };
 
 /*
