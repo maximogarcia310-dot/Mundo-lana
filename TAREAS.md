@@ -13,7 +13,7 @@ Cada tarea tiene un criterio de "listo" para saber cuándo está terminada.
 - Revisar que el sitio esté publicado en GitHub Pages. Si no lo está, explicarle a Máximo los pasos para activarlo.
 - **Listo cuando:** la sección "Visitanos" muestra dirección, horarios, mapa e Instagram, y el sitio tiene una URL pública.
 
-### [ ] 1.2 Mensaje de WhatsApp completo
+### [x] 1.2 Mensaje de WhatsApp completo
 - En el catálogo, el mensaje tiene que incluir el **producto, el color elegido (con su nombre) y la cantidad**. Agregar un selector de cantidad simple.
 - Todos los mensajes que salen de la web terminan con "(Vengo de la web)", para poder registrar de dónde vino el cliente.
 - **Listo cuando:** elegir "Lana merino", color "Violeta uva" y 3 unidades abre WhatsApp con un texto como: "Hola MundoLana Hilados, quería consultar por: Lana merino, color Violeta uva, 3 unidades. (Vengo de la web)".

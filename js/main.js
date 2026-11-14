@@ -14,10 +14,23 @@ function ovillo(color) {
   </svg>`;
 }
 
+// Todos los mensajes que salen de la web terminan así,
+// para poder anotar en el tablero de ventas de dónde vino el cliente
+const FIRMA_WEB = "(Vengo de la web)";
+
 // Arma el link de WhatsApp con un mensaje
 function linkWhatsapp(mensaje) {
   if (!TIENDA.whatsapp) return "#contacto";
-  return `https://wa.me/${TIENDA.whatsapp}?text=${encodeURIComponent(mensaje)}`;
+  return `https://wa.me/${TIENDA.whatsapp}?text=${encodeURIComponent(`${mensaje} ${FIRMA_WEB}`)}`;
+}
+
+// Mensaje de consulta por un producto, con color (si tiene nombre) y cantidad.
+// Ej: "Hola MundoLana Hilados, quería consultar por: Lana merino, color Violeta uva, 3 unidades."
+function mensajeConsulta(producto, nombreColor, cantidad) {
+  const partes = [producto];
+  if (nombreColor) partes.push(`color ${nombreColor}`);
+  partes.push(cantidad === 1 ? "1 unidad" : `${cantidad} unidades`);
+  return `Hola ${TIENDA.nombre}, quería consultar por: ${partes.join(", ")}.`;
 }
 
 // Completa los datos de la tienda en la página
@@ -77,6 +90,8 @@ function tarjetaProducto(prod) {
   art.dataset.categoria = prod.categoria;
 
   let colorElegido = prod.colores[0];
+  let cantidad = 1;
+  const id = prod.nombre.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
   art.innerHTML = `
     <div class="producto-arte" style="background:${colorElegido}22">${ovillo(colorElegido)}</div>
@@ -87,16 +102,36 @@ function tarjetaProducto(prod) {
       <div class="colores">
         ${prod.colores.map((c, i) => `<button class="color${i === 0 ? " elegido" : ""}" style="background:${c}" data-color="${c}" aria-label="Color ${i + 1}"></button>`).join("")}
       </div>
-      <a class="btn btn-wsp" data-consulta>Consultar por WhatsApp</a>
+      <div class="cantidad">
+        <span class="cantidad-titulo" id="cant-${id}">Cantidad</span>
+        <div class="cantidad-control" role="group" aria-labelledby="cant-${id}">
+          <button type="button" data-menos aria-label="Restar una unidad de ${prod.nombre}">−</button>
+          <output data-cantidad aria-live="polite">1</output>
+          <button type="button" data-mas aria-label="Sumar una unidad de ${prod.nombre}">+</button>
+        </div>
+      </div>
+      <a class="btn btn-wsp" data-consulta rel="noopener">Consultar por WhatsApp</a>
     </div>`;
 
   const arte = art.querySelector(".producto-arte");
   const boton = art.querySelector("[data-consulta]");
   const actualizarLink = () => {
-    boton.href = linkWhatsapp(`Hola ${TIENDA.nombre}, quería consultar por: ${prod.nombre}.`);
+    boton.href = linkWhatsapp(mensajeConsulta(prod.nombre, colorElegido.nombre, cantidad));
     if (TIENDA.whatsapp) boton.target = "_blank";
   };
   actualizarLink();
+
+  const salida = art.querySelector("[data-cantidad]");
+  const menos = art.querySelector("[data-menos]");
+  const cambiarCantidad = cambio => {
+    cantidad = Math.min(99, Math.max(1, cantidad + cambio));
+    salida.textContent = cantidad;
+    menos.disabled = cantidad === 1;
+    actualizarLink();
+  };
+  menos.addEventListener("click", () => cambiarCantidad(-1));
+  art.querySelector("[data-mas]").addEventListener("click", () => cambiarCantidad(1));
+  cambiarCantidad(0);
 
   art.querySelectorAll(".color").forEach(b => {
     b.addEventListener("click", () => {
@@ -105,6 +140,7 @@ function tarjetaProducto(prod) {
       b.classList.add("elegido");
       arte.style.background = colorElegido + "22";
       arte.innerHTML = ovillo(colorElegido);
+      actualizarLink();
     });
   });
 
