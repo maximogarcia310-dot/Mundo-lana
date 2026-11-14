@@ -9,7 +9,7 @@ La tienda necesitaba una web rápida y adaptada al celular. Ahí los clientes pu
 ## Pantallas
 
 - **Inicio (`index.html`):** presentación de la tienda, categorías de productos, datos de contacto y botón de WhatsApp.
-- **Catálogo (`catalogo.html`):** productos filtrables por categoría, selector de colores y consulta por WhatsApp de cada producto.
+- **Catálogo (`catalogo.html`):** productos filtrables por categoría, selector de colores con nombre, cantidad y consulta por WhatsApp de cada producto. El mensaje ya sale armado, por ejemplo: "Hola MundoLana Hilados, quería consultar por: Lana merino, color Violeta uva, 3 unidades. (Vengo de la web)".
 
 ## Tecnologías
 
@@ -86,5 +86,7 @@ Después de eso, cada cambio que llega a `main` se publica solo.
 ## Capturas
 
 ![Inicio](capturas/inicio.png)
+
+![Inicio en celular](capturas/inicio-celular.png)
 
 ![Catálogo en celular](capturas/catalogo-celular.png)
