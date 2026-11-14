@@ -72,6 +72,41 @@ function cargarDatos() {
   if (anio) anio.textContent = new Date().getFullYear();
 }
 
+// Datos del negocio para Google (JSON-LD de tipo LocalBusiness), armados desde config.js
+function datosEstructurados() {
+  const DIAS = { lunes: "Monday", martes: "Tuesday", "miércoles": "Wednesday", jueves: "Thursday", viernes: "Friday", "sábado": "Saturday", domingo: "Sunday" };
+  const [localidad, provincia] = TIENDA.ciudad.split(",").map(t => t.trim());
+  const datos = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: TIENDA.nombre,
+    description: "Venta de lanas, hilos, accesorios para tejer y mercería. Envíos a todo el país."
+  };
+  if (TIENDA.url) {
+    datos["@id"] = TIENDA.url + "#tienda";
+    datos.url = TIENDA.url;
+    datos.image = TIENDA.url + "img/compartir.jpg";
+  }
+  if (TIENDA.direccion) {
+    datos.address = { "@type": "PostalAddress", streetAddress: TIENDA.direccion, addressLocality: localidad, addressRegion: provincia, addressCountry: "AR" };
+  }
+  if (TIENDA.whatsapp) datos.telephone = "+" + TIENDA.whatsapp;
+  if (TIENDA.mapaUrl) datos.hasMap = TIENDA.mapaUrl;
+  if (TIENDA.instagram) datos.sameAs = [`https://www.instagram.com/${TIENDA.instagram}/`];
+  if (TIENDA.horariosGoogle && TIENDA.horariosGoogle.length) {
+    datos.openingHoursSpecification = TIENDA.horariosGoogle.map(h => ({
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: h.dias.map(d => DIAS[d.toLowerCase()]).filter(Boolean),
+      opens: h.abre,
+      closes: h.cierra
+    }));
+  }
+  const script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(datos);
+  document.head.appendChild(script);
+}
+
 // Menú para celulares
 function menuCelular() {
   const btn = document.querySelector(".menu-btn");
@@ -217,6 +252,7 @@ function cargarHero() {
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarDatos();
+  datosEstructurados();
   menuCelular();
   cargarHero();
   cargarCatalogo();

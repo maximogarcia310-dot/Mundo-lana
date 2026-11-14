@@ -8,8 +8,17 @@ const TIENDA = {
   ciudad: "Villa Carlos Paz, Córdoba",
   direccion: "Maipú 98",
   horarios: "Lunes a viernes de 9 a 13 hs y de 17 a 20 hs. Sábados de 10 a 13 hs.",
+  // Los mismos horarios, escritos para Google. Si cambian los de arriba, cambiar también estos.
+  horariosGoogle: [
+    { dias: ["lunes", "martes", "miércoles", "jueves", "viernes"], abre: "09:00", cierra: "13:00" },
+    { dias: ["lunes", "martes", "miércoles", "jueves", "viernes"], abre: "17:00", cierra: "20:00" },
+    { dias: ["sábado"], abre: "10:00", cierra: "13:00" }
+  ],
   whatsapp: "5493541583422", // 3541 583422 con código de país (54 9)
   instagram: "mundolanahilados",
+  // Dirección pública de la web. COMPLETAR: cambiarla si se publica en otra dirección
+  // (y cambiarla también en las etiquetas "og:" de index.html y catalogo.html).
+  url: "https://maximogarcia310-dot.github.io/Mundo-lana/",
   // COMPLETAR: este link busca la dirección en Google Maps. Cambiarlo por el link exacto
   // del local (en Google Maps: abrir la ficha de la tienda → Compartir → Copiar vínculo).
   mapaUrl: "https://www.google.com/maps/search/?api=1&query=MundoLana+Hilados%2C+Maip%C3%BA+98%2C+Villa+Carlos+Paz%2C+C%C3%B3rdoba"

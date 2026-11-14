@@ -26,7 +26,8 @@ Cada tarea tiene un criterio de "listo" para saber cuándo está terminada.
 - Pedirle a Máximo las fotos y los nombres de los colores. Mientras tanto, dejar nombres provisorios marcados `// COMPLETAR:`.
 - **Listo cuando:** los colores muestran su nombre al tocarlos y las fotos que haya se ven bien en el celular.
 
-### [ ] 1.4 Vista previa al compartir y Google
+### [x] 1.4 Vista previa al compartir y Google
+- **Pendiente de Máximo:** con el sitio ya publicado, pegar el link en un chat de WhatsApp y pasarlo por la prueba de Google para confirmar (no se puede probar antes de publicar).
 - Agregar etiquetas Open Graph y de Twitter (título, descripción e imagen 1200×630 con la marca) en las dos páginas.
 - Agregar datos estructurados `LocalBusiness` (JSON-LD) con dirección, horarios, teléfono e Instagram.
 - Agregar un favicon con el ovillo del logo.

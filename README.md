@@ -43,6 +43,13 @@ El nombre es el que ve el cliente al tocar el color, y el que nos llega en el me
 
 Si un producto no tiene foto (`foto: ""`), se muestra el ovillo dibujado.
 
+### Vista previa al compartir y datos para Google
+
+- Cuando alguien pega el link en WhatsApp o Instagram aparece la imagen `img/compartir.jpg` (1200×630). El título y la descripción de esa vista previa están en el `<head>` de `index.html` y `catalogo.html` (las etiquetas `og:`), porque WhatsApp no lee `config.js`.
+- Google recibe la dirección, los horarios, el teléfono y el Instagram de la tienda, armados solos desde `TIENDA`. Si cambian los horarios, hay que cambiar `horarios` (el texto que se ve) y `horariosGoogle`.
+- Si la web se muda a otra dirección, hay que cambiar `TIENDA.url` y las direcciones `https://...` de las etiquetas `og:` de las dos páginas.
+- Para probarlo: [prueba de resultados enriquecidos de Google](https://search.google.com/test/rich-results) con la dirección de la web.
+
 ## Cómo verla
 
 Abrí `index.html` en el navegador. No hace falta instalar nada.
